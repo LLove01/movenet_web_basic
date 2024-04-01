@@ -29,7 +29,7 @@ function PoseDetection() {
   };
 
   const [measureStart, setMeasureStart] = useState(false);
-  const [hipPositions, setHipPositions] = useState([]);
+  const [ setHipPositions] = useState([]);
 
   const [averageHipPosition] = useState(null);
 
