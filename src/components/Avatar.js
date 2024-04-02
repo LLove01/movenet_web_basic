@@ -21,6 +21,8 @@ function Avatar() {
     const scaleX = d3.scaleLinear().domain([0, 1920]).range([0, 800]);
     const scaleY = d3.scaleLinear().domain([0, 1080]).range([0, 600]);
 
+    
+
     const keypoints = d3.csvParse(csvData, d => ({
       name: d.Name,
       x: +d.X,
@@ -57,11 +59,12 @@ function Avatar() {
   }, [csvData]);
 
   return (
-    <div className="App">
-      <h2>Upload CSV and Visualize Avatar</h2>
-      <input type="file" accept=".csv" onChange={handleCsvUpload} />
-      <svg ref={svgRef} width="800" height="600" style={{ border: "1px solid black" }}></svg>
-    </div>
+   
+      <div className="App" style={{ backgroundImage: 'url(/stadium.png)', backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+        <h2>Upload CSV and Visualize Avatar</h2>
+        <input type="file" accept=".csv" onChange={handleCsvUpload} />
+        <svg ref={svgRef} width="800" height="600" style={{ border: "1px solid black" }}></svg>
+      </div>
   );
 }
 
