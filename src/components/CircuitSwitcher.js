@@ -1,20 +1,25 @@
 import React, { useState, useEffect } from 'react';
 
-const CircuitSwitcher = ({ width, height }) => {
+const CircuitSwitcher = ({ width, height, isCameraActive }) => {
   const [activeCircuit, setActiveCircuit] = useState(0);
   const circuits = [
-    { x: 28, y: 27 }, // Top-left corner
-    { x: width - -550, y: 15 }, // Top-right corner
-    { x: 15, y: height - -250 }, // Bottom-left corner
-    { x: width - -550, y: height - -250 } // Bottom-right corner
+    { x: 28, y: 27 },
+    { x: width - -550, y: 15 },
+    { x: 15, y: height - -250 },
+    { x: width - -550, y: height - -250 }
   ];
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveCircuit((prev) => (prev + 1) % circuits.length);
-    }, 3000); // Change the active circuit every 3 seconds
+    let interval;
+    if (isCameraActive) {
+      interval = setInterval(() => {
+        setActiveCircuit((prev) => (prev + 1) % circuits.length);
+      }, 3000);
+    } else {
+      setActiveCircuit(0); // Reset to the first circuit when the camera is not active
+    }
     return () => clearInterval(interval);
-  }, [circuits.length]);
+  }, [isCameraActive, circuits.length]);
 
   return (
     <div style={{ position: 'absolute', top: 0, left: 0 }}>
