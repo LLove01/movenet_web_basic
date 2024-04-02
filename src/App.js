@@ -1,13 +1,14 @@
 import React from 'react';
 import './App.css';
-import Avatar from './components/Avatar';
+
+import PoseDetection from './PoseDetection';
 
 function App() {
 
   
   return (
     <div className="App">
-      <Avatar/>
+      <PoseDetection/>
       
     </div>
   );
